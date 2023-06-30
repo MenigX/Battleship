@@ -25,7 +25,16 @@ class Game{
                     }
                 }
                 else {
-                    
+                    pair<int, int> cords = bot.shoot();
+                    bool succes = player.get_fields().first.check_ship(cords);
+                    if (succes){
+                        bot.change_field(2, cords, 'P');
+                       player.change_field(1, cords, 'P');
+                    } 
+                    else{
+                        bot.change_field(2, cords, '*');
+                        player.change_field(1, cords, '*');
+                    }
                 }
                 change_turn();
             }
